@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "debian/stretch64"
   config.vm.network "private_network", ip: "192.168.70.10"
-  
+
   config.vm.provider "virtualbox" do |vb|
       vb.customize [
         "modifyvm", :id,
@@ -13,17 +13,7 @@ Vagrant.configure("2") do |config|
         "--cpus", "4"
       ]
   end
-  
+
   config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options:['nolock,vers=3,udp,noatime,actimeo=1']
   config.vm.provision :shell, path: "vagrant/bootstrap.sh"
-
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
-  config.hostmanager.manage_guest = true
-  config.hostmanager.ignore_private_ip = false
-  config.hostmanager.include_offline = true
-
-  config.hostmanager.aliases = %w(
-    php.gobelins.dev
-  )
 end
