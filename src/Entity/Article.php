@@ -31,6 +31,12 @@ class Article
 
     private $content;
 
+    /**
+     * @var User $user
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +52,22 @@ class Article
         $this->title = $title;
 
         return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 
     public function getContent(): ?string

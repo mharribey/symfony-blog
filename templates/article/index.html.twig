@@ -26,7 +26,7 @@
             {% for article in articles %}
                 <div class="ml-4 d-flex flex-column">
                     <hr class="w-75 mx-auto mt-3 mb-4">
-                    <h2>{{ article.title }}</h2>
+                    <h2>{{ article.title }} by <i>{{ article.user }}</i></h2>
                     <p>- {{ article.content }}</p>
                     {% if app.user %}
                         <a class="btn btn-danger ml-auto" href="{{ path('article_delete', { 'article': article.id }) }}">delete</a>
