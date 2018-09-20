@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\News;
+use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
