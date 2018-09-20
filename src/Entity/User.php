@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -33,6 +34,16 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @var Article[]ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="user")
+     */
+    private $articleCollection;
+
+    public function __construct()
+    {
+        $this->articleCollection = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,5 +101,20 @@ class User implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
+    public function getArticlesCollection(): ArrayCollection
+    {
+        return $this->articleCollection;
+    }
+    public function addArticlesCollection(Article $article): self
+    {
+        $this->articleCollection->add($article);
+
+        return $this;
+    }
+    public function removeArticlesCollection(Article $article): self
+    {
+        $this->articleCollection->remove($article);
+        return $this;
+    }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\ArticleType;
 use App\Entity\Article;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -24,7 +25,7 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
             'form' => $this->createForm(ArticleType::class)->createView(),
-            'articles' => $articles
+            'articles' => $articles,
         ]);
     }
 
